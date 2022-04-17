@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 public class ShootingGame  extends JFrame{
 	private Image bufferImage;
 	private Graphics screenGraph;
@@ -22,6 +24,7 @@ public class ShootingGame  extends JFrame{
 		setVisible(true);
 		setLayout(null);
 		
+		addKeyListener(new keyListner());
 		
 	}
 	// make buffer image , 화면의 깜빡임을 최소화 하는 용도 
@@ -38,6 +41,21 @@ public class ShootingGame  extends JFrame{
 	public void screenDraw(Graphics g) {
 		g.drawImage(mainScreen,0,0,null);
 		this.repaint();
+	}
+	// keyListner
+	class keyListner extends KeyAdapter{
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+		switch(e.getKeyCode()){
+		// close when press "esc"
+		case KeyEvent.VK_ESCAPE:
+		System.exit(0);
+		break;
+		
+		}
+		}
+		
 	}
 	
 	
