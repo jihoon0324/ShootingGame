@@ -24,15 +24,20 @@ public class ShootingGame  extends JFrame{
 		
 		
 	}
+	// make buffer image , 화면의 깜빡임을 최소화 하는 용도 
 	public void paint(Graphics g) {
 		
 		bufferImage =createImage(Main.Screen_width,  Main.Screen_hight);
 		screenGraph = bufferImage.getGraphics();
-		
+		screenDraw(screenGraph);
+		// bufferImage: 불러올이미지, 그림이 그려질 x 좌표 , 그림이 그려질 y 좌표, observer:불러오는 이미지가 큰경우 메소드는 실행이 끝났지만 이미지가 로딩중일때  정상적으로 다 로딩되었다는것을 알리기 위한 용도
+		// g.drawImage(bufferImage,x,y.observer)
+		g.drawImage(bufferImage,0,0,null);
 	}
 	
 	public void screenDraw(Graphics g) {
-		
+		g.drawImage(mainScreen,0,0,null);
+		this.repaint();
 	}
 	
 	
