@@ -23,7 +23,7 @@ public class ShootingGame extends JFrame {
 		setTitle("Shooting Game");
 		// make frames "x" button if false
 		// Not make frames "x" button if true
-		setUndecorated(true);
+		setUndecorated(false);
 		setSize(Main.Screen_width, Main.Screen_hight);
 		// size change
 		setResizable(false);
