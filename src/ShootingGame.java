@@ -23,7 +23,7 @@ public class ShootingGame extends JFrame {
 		setTitle("Shooting Game");
 		// make frames "x" button if false
 		// Not make frames "x" button if true
-		setUndecorated(false);
+		setUndecorated(true);
 		setSize(Main.Screen_width, Main.Screen_hight);
 		// size change
 		setResizable(false);
@@ -121,7 +121,9 @@ public class ShootingGame extends JFrame {
 				game.setRight(true);
 				break;
 		
-				
+			case KeyEvent.VK_SPACE:
+				game.setShooting(true);
+				break;
 				
 			}
 		}
@@ -142,7 +144,9 @@ public class ShootingGame extends JFrame {
 			case KeyEvent.VK_D:
 				game.setRight(false);
 				break;
-		
+			case KeyEvent.VK_SPACE:
+				game.setShooting(false);
+				break;
 				
 				
 			}

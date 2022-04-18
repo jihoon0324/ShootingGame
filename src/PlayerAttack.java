@@ -16,7 +16,7 @@ Image image = new ImageIcon("res/player_attack.png").getImage();
 	}
 	
 	public void fire() {
-		this.x +=15;
+		this.x +=10;
 	}
 	
 	

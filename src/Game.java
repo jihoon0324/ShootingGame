@@ -40,6 +40,7 @@ public class Game extends Thread {
 					Thread.sleep(delay - System.currentTimeMillis() + pretime);
 					
 					keyProcess();
+					playerAttackProcess();
 					cnt++;
 				} catch (InterruptedException e) {
 
@@ -76,6 +77,12 @@ public class Game extends Thread {
 	
 	public void playerDraw(Graphics g) {
 		g.drawImage(player,playerX,playerY,null);
+		for (int i=0 ; i<playerAttackArryList.size();i++) {
+			playerAttack= playerAttackArryList.get(i);
+		   g.drawImage(playerAttack.image,playerAttack.x,playerAttack.y,null);
+		}
+		
+		
 	}
 
 	public void setUp(boolean up) {
@@ -94,7 +101,9 @@ public class Game extends Thread {
 		this.right = right;
 	}
 	
-	
+	public void setShooting(boolean shooting) {
+		this.shooting=shooting;
+	}
 	
 
 }
