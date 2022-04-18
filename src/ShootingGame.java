@@ -72,6 +72,7 @@ public class ShootingGame extends JFrame {
 		// 실행이 끝났지만 이미지가 로딩중일때 정상적으로 다 로딩되었다는것을 알리기 위한 용도
 		// g.drawImage(bufferImage,x,y.observer)
 		g.drawImage(bufferImage, 0, 0, null);
+
 	}
 
 	public void screenDraw(Graphics g) {
