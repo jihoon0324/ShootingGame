@@ -15,6 +15,8 @@ public class ShootingGame extends JFrame {
 	private Image gameScreen = new ImageIcon("res/game_screen.png").getImage();
 
 	private boolean isMainScreen, isLoadingScreen, isGameScreen;
+	
+	public static Game game= new Game();
 
 	public ShootingGame() {
 		// title bar
@@ -59,7 +61,7 @@ public class ShootingGame extends JFrame {
 		};
 		// after loading 3 second than change to game screen
 		loadingTimer.schedule(loadingTask, 3000);
-		
+		game.start();
 	}
 
 	// make buffer image , 화면의 깜빡임을 최소화 하는 용도
@@ -84,6 +86,7 @@ public class ShootingGame extends JFrame {
 		}
 		if (isGameScreen) {
 			g.drawImage(gameScreen, 0, 0, null);
+			game.gameDraw(g);
 		}
 
 		this.repaint();
@@ -104,6 +107,44 @@ public class ShootingGame extends JFrame {
 					gameStart();
 				}
 				break;
+				
+			case KeyEvent.VK_W:
+				game.setUp(true);
+				break;
+			case KeyEvent.VK_S:
+				game.setDown(true);
+				break;
+			case KeyEvent.VK_A:
+				game.setLeft(true);
+				break;
+			case KeyEvent.VK_D:
+				game.setRight(true);
+				break;
+		
+				
+				
+			}
+		}
+		public void keyReleased(KeyEvent e) {
+			switch (e.getKeyCode()) {
+			// close when press "esc"
+			
+			
+			case KeyEvent.VK_W:
+				game.setUp(false);
+				break;
+			case KeyEvent.VK_S:
+				game.setDown(false);
+				break;
+			case KeyEvent.VK_A:
+				game.setLeft(false);
+				break;
+			case KeyEvent.VK_D:
+				game.setRight(false);
+				break;
+		
+				
+				
 			}
 		}
 

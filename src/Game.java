@@ -1,5 +1,5 @@
 import java.awt.Image;
-
+import java.awt.*;
 import javax.swing.ImageIcon;
 
 //player 움직임 구현
@@ -33,6 +33,8 @@ public class Game extends Thread {
 				try {
 					// 차이만큼 sleep
 					Thread.sleep(delay - System.currentTimeMillis() + pretime);
+					
+					keyProcess();
 					cnt++;
 				} catch (InterruptedException e) {
 
@@ -50,6 +52,33 @@ public class Game extends Thread {
 		if(right && playerX +playerWidth +playerSpeed <Main.Screen_width) playerX += playerSpeed;
 		
 	}
+	
+	
+	public void gameDraw(Graphics g) {
+		playerDraw(g);
+	}
+	
+	public void playerDraw(Graphics g) {
+		g.drawImage(player,playerX,playerY,null);
+	}
+
+	public void setUp(boolean up) {
+		this.up = up;
+	}
+
+	public void setDown(boolean down) {
+		this.down = down;
+	}
+
+	public void setLeft(boolean left) {
+		this.left = left;
+	}
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+	
+	
 	
 
 }
