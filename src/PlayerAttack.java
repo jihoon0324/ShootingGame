@@ -2,7 +2,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class playerAttack {
+public class PlayerAttack {
 
 Image image = new ImageIcon("res/player_attack.png").getImage();
 	int x,y;
@@ -10,7 +10,7 @@ Image image = new ImageIcon("res/player_attack.png").getImage();
 	int height =image.getHeight(null);
 	int attack =5;
 	
-	public playerAttack(int x,int y) {
+	public PlayerAttack(int x,int y) {
 		this.x=x;
 		this.y=y;
 	}

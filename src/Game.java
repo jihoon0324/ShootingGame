@@ -1,4 +1,5 @@
 import java.awt.Image;
+import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.ImageIcon;
 
@@ -19,8 +20,12 @@ public class Game extends Thread {
 	private int playerSpeed = 10;
 	private int playerHP = 30;
 
-	private boolean up, down, left, right;
+	private boolean up, down, left, right, shooting;
 
+	// for player attack infomation
+	ArrayList<PlayerAttack> playerAttackArryList = new ArrayList<>();
+	private PlayerAttack playerAttack;
+	
 	@Override
 	public void run() {
 		cnt = 0;
@@ -50,7 +55,18 @@ public class Game extends Thread {
 		if(down && playerY +playerHeight +playerSpeed <Main.Screen_hight) playerY+= playerSpeed;
 		if(left && playerX -playerSpeed >0) playerX -= playerSpeed;
 		if(right && playerX +playerWidth +playerSpeed <Main.Screen_width) playerX += playerSpeed;
+		// 플레이어와 적당한 거리에서 공격을 만들어주고 그 공격을 어레이에 넣는다
+		if(shooting && cnt %15 ==0) {
+			playerAttack = new PlayerAttack(playerX+222,playerY+25);
+			playerAttackArryList.add(playerAttack);
+		}
 		
+	}
+	private void playerAttackProcess() {
+		for (int i=0 ; i<playerAttackArryList.size();i++) {
+			playerAttack= playerAttackArryList.get(i);
+			playerAttack.fire();
+		}
 	}
 	
 	
