@@ -24,7 +24,13 @@ public class Game extends Thread {
 
 	// for player attack infomation
 	ArrayList<PlayerAttack> playerAttackArryList = new ArrayList<>();
+	ArrayList<Enemy> enemyArryList = new ArrayList<>();
+	ArrayList<EnemyAttack> enemyAttackArryList = new ArrayList<>();
+	
 	private PlayerAttack playerAttack;
+	private Enemy enemy;
+	private EnemyAttack enemyAttack;
+	
 	
 	@Override
 	public void run() {
@@ -41,6 +47,8 @@ public class Game extends Thread {
 					
 					keyProcess();
 					playerAttackProcess();
+					enemyAppearProcess();
+					enemyMoveProcess();
 					cnt++;
 				} catch (InterruptedException e) {
 
@@ -70,9 +78,25 @@ public class Game extends Thread {
 		}
 	}
 	
+	private void enemyAppearProcess() {
+		 if (cnt %80 ==0) {
+			 enemy =new Enemy(1120, (int)(Math.random()*621));
+			 enemyArryList.add(enemy);
+		 }
+	}
+	
+	private void enemyMoveProcess() {
+		for(int i=0; i<enemyArryList.size();i++) {
+			enemy = enemyArryList.get(i);
+			enemy.move();
+		}
+		
+	}
+	
 	
 	public void gameDraw(Graphics g) {
 		playerDraw(g);
+		enemyDraw(g);
 	}
 	
 	public void playerDraw(Graphics g) {
@@ -85,6 +109,15 @@ public class Game extends Thread {
 		
 	}
 
+	public void enemyDraw(Graphics g) {
+		for(int i=0; i<enemyArryList.size();i++) {
+			enemy = enemyArryList.get(i);
+			g.drawImage(enemy.image,enemy.x,enemy.y,null);
+		}
+	}
+	
+	
+	
 	public void setUp(boolean up) {
 		this.up = up;
 	}

@@ -15,7 +15,7 @@ public class EnemyAttack {
 	}
 
 	public void fire() {
-		this.x += 12;
+		this.x -= 12;
 	}
 	
 	

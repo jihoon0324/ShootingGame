@@ -8,7 +8,7 @@ public class PlayerAttack {
 	int x, y;
 	int width = image.getWidth(null);
 	int height = image.getHeight(null);
-	int attack = 15;
+	int attack = 5;
 
 	public PlayerAttack(int x, int y) {
 		this.x = x;
@@ -16,7 +16,7 @@ public class PlayerAttack {
 	}
 
 	public void fire() {
-		this.x += 10;
+		this.x += 15;
 	}
 
 }
